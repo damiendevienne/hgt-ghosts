@@ -10,6 +10,6 @@ Correspondance_ALE_zombi et prediction_zombi permettent de prédire ce que vont 
 
 Correspondance_ALE_ALE et prédiction_ALE permettent, quand il y a eu deux inférence ALE (une avant et l'autre après échantillonnage), de savoir quel sont les transferts conservé d'un inférence a l'autre. Pour cela il prend les premier résultats d'inférence et fait un prédiction de ce qu'il vont devenir suite a un échantillonnage. Puis il compare ces prédictions aux résultats de la seconde inférence. il donne en sortie les transfert qui se correspondent ainsi que leur score respectif, les transfert qui ont disparu et les transferrts qui sont apparu avec la seconde inférence.
 
-Les fichier necessaire au bon fonctionnement des scripts sont indiqué en début de chacun d'eux. 
+Les fichiers necessaire au bon fonctionnement des scripts sont indiqué en début de chacun d'eux. 
 
 J'ai également implémenter un script bash qui montre la facon dont je les ai utilisé. il peut servir d'exemple a leur bon fonctionnement.
