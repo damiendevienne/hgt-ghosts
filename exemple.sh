@@ -83,7 +83,7 @@ do
   cp SampledSpeciesTree.nwk ~/$racine
   cp *_events.tsv ~/$racine
 
-#### On lance les code python. il faut tous les lancer dans un meme répertoire afin d'avoir les résultats de tout les genes dans un meme fichier
+#### On lance les codes python. il faut tous les lancer dans un meme répertoire afin d'avoir les résultats de tout les genes dans un meme fichier
 
   cd ~/$racine
   python3 code.py *_prunedtree.nwk.ale.uTs *_prunedtree.nwk.ale.spTree *_sampledtree.nwk.ale.spTree $compte
@@ -94,7 +94,7 @@ do
 
   python3 sortie_2.py *_sampledtree.nwk.ale.uTs $compte SampledSpeciesTree.nwk *_sampledtree.nwk.ale.spTree
 
-  python3 vp_et_compagnie.py *_events.tsv *_sampledtree.nwk.ale.uTs CompleteTree.nwk SampledSpeciesTree.nwk *_sampledtree.nwk.ale.spTree $compte
+  python3 matrice_de_confusion.py *_events.tsv *_sampledtree.nwk.ale.uTs CompleteTree.nwk SampledSpeciesTree.nwk *_sampledtree.nwk.ale.spTree $compte
 
 ### on conserve les sortie correspondante au transfert prédits
 
