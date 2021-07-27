@@ -12,4 +12,4 @@ Correspondance_ALE_ALE et prédiction_ALE permettent, quand il y a eu deux infé
 
 Les fichiers necessaire au bon fonctionnement des scripts sont indiqué en début de chacun d'eux. 
 
-J'ai également implémenter un script bash qui montre la facon dont je les ai utilisé. il peut servir d'exemple a leur bon fonctionnement.
+J'ai également implémenter un script bash qui montre la facon dont je les ai utilisé. il peut servir d'exemple pour leur bon fonctionnement.
