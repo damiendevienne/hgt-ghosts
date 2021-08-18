@@ -24,13 +24,13 @@ do
 
   cd ~/$chemin
 
-#### On copie tout les fichiers python ainsi que les fichier utile a leur utilisation vers le dossier contenant le gene d'interet
+#### On copie tout les fichiers python ainsi que les fichier utile à leur utilisation vers le dossier contenant le gene d'interet
 
-  cp code.py ~/$racine
-  cp sortie.py ~/$racine
-  cp code_2.py ~/$racine
-  cp sortie_2.py ~/$racine
-  cp vp_et_compagnie.py ~/$racine
+  cp Prediction_ALE.py ~/$racine
+  cp Correspondance_ALE_ALE.py ~/$racine
+  cp Prediction_zombi.py ~/$racine
+  cp Correspondance_ALE_Zombi.py ~/$racine
+  cp calcul_matrice_confusion.py ~/$racine
   cp clean.py ~/$racine/$compte
   cp spe3 ~/$racine/$compte
 
@@ -86,15 +86,15 @@ do
 #### On lance les codes python. il faut tous les lancer dans un meme répertoire afin d'avoir les résultats de tout les genes dans un meme fichier
 
   cd ~/$racine
-  python3 code.py *_prunedtree.nwk.ale.uTs *_prunedtree.nwk.ale.spTree *_sampledtree.nwk.ale.spTree $compte
+  python3 Prediction_ALE.py *_prunedtree.nwk.ale.uTs *_prunedtree.nwk.ale.spTree *_sampledtree.nwk.ale.spTree $compte
 
-  python3 sortie.py *_sampledtree.nwk.ale.uTs $compte
+  python3 Correspondance_ALE_ALE.py *_sampledtree.nwk.ale.uTs $compte
 
-  python3 code_2.py *_events.tsv CompleteTree.nwk *_sampledtree.nwk.ale.spTree $compte
+  python3 Prediction_zombi.py *_events.tsv CompleteTree.nwk *_sampledtree.nwk.ale.spTree $compte
 
-  python3 sortie_2.py *_sampledtree.nwk.ale.uTs $compte SampledSpeciesTree.nwk *_sampledtree.nwk.ale.spTree
+  python3 Correspondance_ALE_Zombi.py *_sampledtree.nwk.ale.uTs $compte SampledSpeciesTree.nwk *_sampledtree.nwk.ale.spTree
 
-  python3 matrice_de_confusion.py *_events.tsv *_sampledtree.nwk.ale.uTs CompleteTree.nwk SampledSpeciesTree.nwk *_sampledtree.nwk.ale.spTree $compte
+  python3 calcul_matrice_confusion.py *_events.tsv *_sampledtree.nwk.ale.uTs CompleteTree.nwk SampledSpeciesTree.nwk *_sampledtree.nwk.ale.spTree $compte
 
 ### on conserve les sortie correspondante au transfert prédits
 
