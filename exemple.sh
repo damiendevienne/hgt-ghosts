@@ -39,7 +39,6 @@ do
   cp Prediction_zombi.py ~/$racine
   cp Correspondance_ALE_Zombi.py ~/$racine
   cp calcul_matrice_confusion.py ~/$racine
-  cp clean.py ~/$racine/$compte
   cp spe3 ~/$racine/$compte
 
   cd ~/$chemin/T
@@ -51,27 +50,11 @@ do
   cd ~/$chemin/G/Gene_families
   cp $compte"_events.tsv" ~/$racine/$compte
 
-  cd ~/$chemin/SAMPLE_4
+  cd ~/$chemin/SAMPLE_1 ## ici il s'agit du premier dossier obtenu avec la commande sample de zombi. il faut changer le numéro de dossier si on lance ce script plusieurs fois
   cp $compte"_sampledtree.nwk" ~/$racine/$compte
   cp SampledSpeciesTree.nwk ~/$racine/$compte
 
-####### on nettoie les arbres car ALE ne fonctionne pas si il y a le Root
-
-  cd ~/$racine/$compte
-
-  python3 clean.py $compte"_prunedtree.nwk" "Arbre_"$compte"_prunedtree.nwk"
-  python3 clean.py CompleteTree.nwk Arbre_complet.nwk
-  python3 clean.py $compte"_sampledtree.nwk"  "Arbre_"$compte"_sampledtree.nwk";
-  python3 clean.py SampledSpeciesTree.nwk Arbre_sample.nwk
-
-  rm CompleteTree.nwk
-  mv Arbre_complet.nwk CompleteTree.nwk
-  mv "Arbre_"$compte"_prunedtree.nwk" $compte"_prunedtree.nwk"
-
-  rm SampledSpeciesTree.nwk
-  mv Arbre_sample.nwk SampledSpeciesTree.nwk
-  mv "Arbre_"$compte"_sampledtree.nwk" $compte"_sampledtree.nwk"
-
+####### Il faut vérifier qu'il n'y a pas de noeud Root dans les arbres sinon ALE retournera une erreur
 
 ###### on lance ALE
   ALEobserve *_prunedtree.nwk
@@ -93,7 +76,9 @@ do
 
 #### On lance les codes python. il faut tous les lancer dans un meme répertoire afin d'avoir les résultats de tout les genes dans un meme fichier
 
-  cd ~/$racine
+  cd ~/$racine ## il faut lancer les scripts python dans un même dossier car les résultats s'ecrivent sur un même fichier pour tout les gènes
+  ### on replacera les fichiers propre à chaque gène dans le dossier avec le bon numero par la suite
+  
   python3 Prediction_ALE.py *_prunedtree.nwk.ale.uTs *_prunedtree.nwk.ale.spTree *_sampledtree.nwk.ale.spTree $compte
 
   python3 Correspondance_ALE_ALE.py *_sampledtree.nwk.ale.uTs $compte
@@ -104,7 +89,7 @@ do
 
   python3 calcul_matrice_confusion.py *_events.tsv *_sampledtree.nwk.ale.uTs CompleteTree.nwk SampledSpeciesTree.nwk *_sampledtree.nwk.ale.spTree $compte
 
-### on conserve les sortie correspondante au transfert prédits
+### on conserve les sorties correspondantes aux transfert prédits
 
   cp new_transfert.txt ~/$racine/$compte
   cp new_transfert_2.txt ~/$racine/$compte
