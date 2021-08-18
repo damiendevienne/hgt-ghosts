@@ -1,14 +1,22 @@
 #!/bin/bash
 
-if [ ! -d echant_5 ];then
-echo "Création du dossier echant_5 !";
-mkdir echant_5
+#### Mes gènes sont rangés dans le dossier data_rhizo
+#### Mes résulats seront placé dans le dossier dossier_resulats
+
+if [ ! -d dossier_resultats ];then
+echo "Création du dossier dossier_resulats !";
+mkdir dossier_resulats
 fi
 
-racine=Bureau/data_rhizo/echant_5
+racine=Bureau/data_rhizo/dossier_resulats
 chemin=Bureau/data_rhizo
 
-python3 ~/ZOMBI/SpeciesSampler.py n 93 ./$chemin
+##### Fonctionne seulement si un arbre a déja été simulé grace à zombi
+##### Si ce n'est pas le cas il faut utiliser les deux ligne ci dessous avec spe_tree l'arbre d'espece a partir du quel les arbre de gènes doivent etre simulé
+####python3 ~/ZOMBI/Zombi.py Ti ~/$racine/spe_tree ./$racine
+###python3 ~/ZOMBI/Zombi.py G ./ZOMBI/Parameters/GenomeParameters.tsv ./$racine
+
+python3 ~/ZOMBI/SpeciesSampler.py n 93 ./$chemin ### le chiffre placé après le n correspond au nombre de feuille que l'on veut conserver après échantillonnage
 
 cd ~/$chemin
 
@@ -116,5 +124,5 @@ do
 done
 
 cd ~/$chemin
-zip -r echant_10.zip echant_10
-rm -r echant_10
+zip -r dossier_resulats.zip dossier_resulats
+rm -r dossier_resulats
